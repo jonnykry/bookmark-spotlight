@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Bookmark Spotlight",
+  "description": "It's like Spotlight, but for Bookmarks",
+  "version": "1.0.1",
+  "icons": {
+    "16": "src/img/icon.png"
+  },
+  "permissions": [
+    "bookmarks"
+  ],
+  "commands": {
+    "show-search-bar": {
+      "suggested_key": {
+        "default": "Ctrl+B"
+      },
+      "description": "Show the Bookmark Spotlight"
+    }
+  },
+  "browser_action": {
+    "default_title": "Bookmark Spotlight",
+    "default_icon": "src/img/icon.png",
+    "default_popup": "src/popup.html"
+  }
+}
