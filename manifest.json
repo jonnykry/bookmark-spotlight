@@ -21,5 +21,6 @@
     "default_title": "Bookmark Spotlight",
     "default_icon": "src/img/icon.png",
     "default_popup": "src/popup.html"
-  }
+  },
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com;https://maxcdn.bootstrapcdn.com; object-src 'self'"
 }
