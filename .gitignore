@@ -7,3 +7,6 @@ src/img/icon.png
 
 # editor
 .idea
+
+# npm logs
+npm-debug.log
