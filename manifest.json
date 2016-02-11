@@ -4,15 +4,18 @@
   "description": "It's like Spotlight, but for Bookmarks",
   "version": "1.0.1",
   "icons": {
-    "16": "src/img/icon.png"
+    "16": "src/img/icon.png",
+    "48": "src/img/icon.png",
+    "128": "src/img/icon.png"
   },
   "permissions": [
     "bookmarks"
   ],
   "commands": {
-    "show-search-bar": {
+    "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+B"
+        "default": "Ctrl+Shift+Space",
+        "mac": "Command+Shift+Space"
       },
       "description": "Show the Bookmark Spotlight"
     }

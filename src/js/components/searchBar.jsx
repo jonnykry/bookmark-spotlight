@@ -1,4 +1,9 @@
-const classNames = require('classnames');
+const Reflux = require('reflux');
+const classnames = require('classnames');
+
+const RefluxActions = require('../RefluxActions.jsx');
+
+const ENTER_KEY_CODE = 13;
 
 module.exports = React.createClass({
 
@@ -12,11 +17,22 @@ module.exports = React.createClass({
         this.setState({
             value: event.target.value
         });
-        console.log('Search term: ', this.state.value);
     },
 
     handleClick: function() {
-        console.log('Searching Bookmarks!', this.props.bookmarks);
+        RefluxActions.search(this.state.value);
+        this.setState({
+            value: ''
+        })
+    },
+
+    handleKeyDown: function(e) {
+        if (e.keyCode === ENTER_KEY_CODE) {
+            RefluxActions.search(this.state.value);
+            this.setState({
+                value: ''
+            })
+        }
     },
 
     render: function() {
@@ -28,6 +44,7 @@ module.exports = React.createClass({
                         placeholder="Search for..."
                         value={this.state.value}
                         onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown}
                     />
                     <span className="input-group-btn">
                         <button className="btn btn-default" type="button" onClick={this.handleClick}>Go!</button>
@@ -38,3 +55,15 @@ module.exports = React.createClass({
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+

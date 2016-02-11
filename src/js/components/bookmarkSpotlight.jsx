@@ -1,24 +1,28 @@
-var classNames = require('classnames');
-var SearchBar = require('./searchBar.jsx');
-var SearchItems = require('./searchItems.jsx');
+const classnames = require('classnames');
+
+const SearchStore = require('../stores/SearchStore.jsx');
+const SearchBar = require('./searchBar.jsx');
+const SearchItems = require('./searchItems.jsx');
 
 module.exports = React.createClass({
-
-    getInitialState: function() {
-        return {
-            bookmarks: []
-        };
-    },
 
     componentDidMount: function() {
         chrome.bookmarks.getTree(this.populateBookmarkDictionary);
     },
 
-    populateBookmarkDictionary: function(result) {
-        console.log('Setting up Bookmarks');
-        this.setState({
-            bookmarks: result
-        });
+    populateBookmarkDictionary: function(bookmarks) {
+        for (var i = 0; i < bookmarks.length; i++) {
+            var bookmark = bookmarks[i];
+            if (bookmark.url) {
+                var tempArr = SearchStore.allBookmarkTitles.slice();
+                tempArr.push(bookmark.title);
+                SearchStore.allBookmarkTitles = tempArr;
+            }
+
+            if (bookmark.children) {
+                this.populateBookmarkDictionary(bookmark.children);
+            }
+        }
     },
 
     render: function() {
@@ -26,7 +30,7 @@ module.exports = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <SearchBar bookmarks={this.state.bookmarks} />
+                    <SearchBar />
                 </div>
                 <div className="row">
                     <SearchItems />
