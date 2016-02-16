@@ -5,7 +5,6 @@ const SearchStore = require('../stores/SearchStore.jsx');
 const Bookmark = require('./bookmark.jsx');
 
 module.exports = React.createClass({
-
     mixins: [Reflux.connect(SearchStore, 'onSearch')],
 
     getInitialState: function() {
@@ -18,15 +17,18 @@ module.exports = React.createClass({
         var bookmarks = SearchStore.bookmarksToRender;
         var result = [];
 
-        if (bookmarks) {
+        if (bookmarks.length > 0) {
             for (var i = 0; i < bookmarks.length; i++) {
                 var bookmark = bookmarks[i];
                 result.push(
                     <Bookmark
                         title={bookmark.title}
-                        url={bookmark.url} />
+                        url={bookmark.url}
+                        hasResults={true} />
                 );
             }
+        } else {
+            result.push(<div className="col-lg-6">No Results Found</div>);
         }
 
         return result;
@@ -36,5 +38,4 @@ module.exports = React.createClass({
         this.getBookmarksToRender();
         return <div className="list-group">{this.getBookmarksToRender()}</div>;
     }
-
 });

@@ -2,10 +2,8 @@ const Reflux = require('reflux');
 const RefluxActions = require('../RefluxActions.jsx');
 
 module.exports = Reflux.createStore({
-
     init: function() {
         this.listenTo(RefluxActions.search, this.onSearch);
-        // this.listenTo(RefluxActions.renderSearchResults, this.renderSearchResults);
 
         this.allBookmarkTitles = [];
         this.bookmarksToRender = [];
@@ -17,10 +15,8 @@ module.exports = Reflux.createStore({
     },
 
     handleBookmarkSearch: function(result) {
-        console.log('Should trigger bookmark', result);
         this.bookmarksToRender = result;
         this.trigger(this.bookmarksToRender);
     }
-
 });
 
