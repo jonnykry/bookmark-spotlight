@@ -5,7 +5,7 @@ An easier way to filter through your bookmarks and bookmark folders in Chrome.
 
 ##### To-do list / current work in progress:
 * [x] - Implement a proper `react` / `reflux` flow
-* [ ] - Create `SearchItems` based on search results from the `SearchStore`
+* [x] - Create `SearchItems` based on search results from the `SearchStore`
 * [ ] - Introduce `eslint` for better dev flow
 * [ ] - Change all code to ES6 standards
 * [ ] - Enhance search
