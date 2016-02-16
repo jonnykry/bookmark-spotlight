@@ -5,7 +5,6 @@ const SearchBar = require('./searchBar.jsx');
 const SearchItems = require('./searchItems.jsx');
 
 module.exports = React.createClass({
-
     componentDidMount: function() {
         chrome.bookmarks.getTree(this.populateBookmarkDictionary);
     },
@@ -29,7 +28,7 @@ module.exports = React.createClass({
 
         return (
             <div className="container">
-                <div className="row">
+                <div className="row searchRow">
                     <SearchBar />
                 </div>
                 <div className="row">
@@ -38,6 +37,5 @@ module.exports = React.createClass({
             </div>
         );
     }
-
 });
 

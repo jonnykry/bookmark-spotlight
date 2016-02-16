@@ -6,7 +6,6 @@ const RefluxActions = require('../RefluxActions.jsx');
 const ENTER_KEY_CODE = 13;
 
 module.exports = React.createClass({
-
     getInitialState: function() {
         return {
             value: ''
@@ -37,33 +36,18 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="col-lg-6">
-                <div className="input-group">
-                    <input
-                        type="text" className="search-input form-control"
-                        placeholder="Search for..."
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown}
-                    />
-                    <span className="input-group-btn">
-                        <button className="btn btn-default" type="button" onClick={this.handleClick}>Go!</button>
-                    </span>
-                </div>
+            <div className="input-group">
+                <input
+                    type="text" className="search-input form-control"
+                    placeholder="Search for..."
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
+                />
+                <span className="input-group-btn">
+                    <button className="btn btn-default" type="button" onClick={this.handleClick}>Go!</button>
+                </span>
             </div>
         );
     }
-
 });
-
-
-
-
-
-
-
-
-
-
-
-

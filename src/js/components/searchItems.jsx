@@ -28,7 +28,7 @@ module.exports = React.createClass({
                 );
             }
         } else {
-            result.push(<div className="col-lg-6">No Results Found</div>);
+            result.push(<div>No Results Found</div>);
         }
 
         return result;
