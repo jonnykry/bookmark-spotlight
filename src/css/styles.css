@@ -8,6 +8,18 @@ body {
     margin: 0;
 }
 
-.searchRow {
+.row {
+    margin: 0;
+}
+
+.input-group {
     width: 100%;
+}
+
+.search-input {
+
+}
+
+.list-group-item {
+
 }

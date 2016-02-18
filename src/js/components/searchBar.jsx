@@ -44,9 +44,6 @@ module.exports = React.createClass({
                     onChange={this.handleChange}
                     onKeyDown={this.handleKeyDown}
                 />
-                <span className="input-group-btn">
-                    <button className="btn btn-default" type="button" onClick={this.handleClick}>Go!</button>
-                </span>
             </div>
         );
     }

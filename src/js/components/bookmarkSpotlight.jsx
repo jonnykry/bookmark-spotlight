@@ -28,7 +28,7 @@ module.exports = React.createClass({
 
         return (
             <div className="container">
-                <div className="row searchRow">
+                <div className="row search-row">
                     <SearchBar />
                 </div>
                 <div className="row">
