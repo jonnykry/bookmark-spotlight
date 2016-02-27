@@ -4,6 +4,9 @@ const classNames = require('classnames');
 const SearchStore = require('../stores/SearchStore.jsx');
 const SearchItem = require('./searchItem.jsx');
 
+const DOWN_ARROW = 40;
+const UP_ARROW = 38;
+
 module.exports = React.createClass({
     mixins: [Reflux.connect(SearchStore, 'onSearch', 'onFocusItem')],
 
@@ -13,30 +16,6 @@ module.exports = React.createClass({
         };
     },
 
-    renderBookmarks: function() {
-        var bookmarks = SearchStore.bookmarksToRender;
-        var items = [];
-
-        if (bookmarks.length > 0) {
-            for (var i = 0; i < bookmarks.length; i++) {
-                var bookmark = bookmarks[i];
-                items.push(
-                    <SearchItem
-                        active={this.state.focusedItemIndex === i}
-                        title={bookmark.title}
-                        url={bookmark.url}
-                        hasResults={true}
-                        onFocus={this.props.handleOnFocus}
-                        onBlur={this.props.handleOnBlur} />
-                );
-            }
-        }
-
-        SearchStore.searchItems = items;
-        return items;
-    },
-
-    // TODO: Get this keydown handler working
     handleKeyDown: function(e) {
         var index = 0;
 
@@ -53,7 +32,31 @@ module.exports = React.createClass({
         }
     },
 
+    renderBookmarks: function() {
+        var bookmarks = SearchStore.bookmarksToRender;
+        var items = [];
+
+        if (bookmarks.length > 0) {
+            for (var i = 0; i < bookmarks.length; i++) {
+                var bookmark = bookmarks[i];
+                items.push(
+                    <SearchItem
+                        active={this.state.focusedItemIndex === i}
+                        handleKeyDown={this.handleKeyDown}
+                        tabIndex={i + 1}
+                        title={bookmark.title}
+                        url={bookmark.url}
+                        hasResults={true} />
+                );
+            }
+        }
+
+        SearchStore.searchItems = items;
+        return items;
+    },
+
+
     render: function() {
-        return <div className="list-group" onKeyDown={this.handleKeyDown}>{this.renderBookmarks()}</div>;
+        return <div className="list-group">{this.renderBookmarks()}</div>;
     }
 });

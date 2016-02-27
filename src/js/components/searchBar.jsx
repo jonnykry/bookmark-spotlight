@@ -21,6 +21,7 @@ module.exports = React.createClass({
     },
 
     handleKeyDown: function(e) {
+        console.log('searchbar handler bruh');
         if (e.keyCode === ENTER_KEY_CODE) {
             RefluxActions.search(this.state.value);
             this.setState({
