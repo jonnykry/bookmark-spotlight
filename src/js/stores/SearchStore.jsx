@@ -4,9 +4,13 @@ const RefluxActions = require('../RefluxActions.jsx');
 module.exports = Reflux.createStore({
     init: function() {
         this.listenTo(RefluxActions.search, this.onSearch);
+        this.listenTo(RefluxActions.refocus, this.onRefocus);
+        this.listenTo(RefluxActions.focusSearchBar, this.onFocusSearchBar);
 
         this.allBookmarkTitles = [];
         this.bookmarksToRender = [];
+        this.focusedItemIndex = -1; // default to input
+        this.forceSeachBarFocus = false;
     },
 
     onSearch: function(value) {
@@ -14,9 +18,19 @@ module.exports = Reflux.createStore({
         chrome.bookmarks.search(value, this.handleBookmarkSearch);
     },
 
+    onRefocus: function() {
+        this.trigger();
+    },
+
     handleBookmarkSearch: function(result) {
         this.bookmarksToRender = result;
         this.trigger(this.bookmarksToRender);
+    },
+
+    onFocusSearchBar: function() {
+        this.forceSeachBarFocus = true;
+        this.trigger();
     }
+
 });
 

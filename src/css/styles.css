@@ -3,6 +3,23 @@ body {
     width: 500px;
 }
 
+body, .list-group-item, .search-input {
+    background-color: #262626;
+    color: #FFFFFF;
+}
+
+.list-group-item:active, .list-group-item:focus, .list-group-item:hover {
+    background-color: #185C7F;
+}
+
+.list-group-item {
+    border-color: #d9d9d9;
+}
+
+a {
+    color: #FFFFFF;
+}
+
 .container {
     padding: 0;
     margin: 0;

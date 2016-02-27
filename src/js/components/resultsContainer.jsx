@@ -1,6 +1,7 @@
 const Reflux = require('reflux');
 const classNames = require('classnames');
 
+const RefluxActions = require('../RefluxActions.jsx');
 const SearchStore = require('../stores/SearchStore.jsx');
 const SearchItem = require('./searchItem.jsx');
 
@@ -8,27 +9,15 @@ const DOWN_ARROW = 40;
 const UP_ARROW = 38;
 
 module.exports = React.createClass({
-    mixins: [Reflux.connect(SearchStore, 'onSearch', 'onFocusItem')],
-
-    getInitialState: function() {
-        return {
-            focusedItemIndex: 0
-        };
-    },
+    mixins: [Reflux.connect(SearchStore, 'onSearch', 'onRefocus')],
 
     handleKeyDown: function(e) {
-        var index = 0;
-
-        if (e.keyCode === DOWN_ARROW && this.state.focusedItemIndex < SearchStore.bookmarksToRender.length) {
-            index = this.state.focusedItemIndex + 1;
-            this.setState({
-                focusedItemIndex: index
-            });
-        } else if (e.keyCode === UP_ARROW && this.state.focusedItemIndex > 0) {
-            index = this.state.focusedItemIndex - 1;
-            this.setState({
-                focusedItemIndex: index
-            });
+        if (e.keyCode === DOWN_ARROW && SearchStore.focusedItemIndex < SearchStore.bookmarksToRender.length - 1) {
+            SearchStore.focusedItemIndex = SearchStore.focusedItemIndex + 1;
+            RefluxActions.refocus();
+        } else if (e.keyCode === UP_ARROW && SearchStore.focusedItemIndex > -1) {
+            SearchStore.focusedItemIndex = SearchStore.focusedItemIndex - 1;
+            SearchStore.focusedItemIndex === -1 ? RefluxActions.focusSearchBar() : RefluxActions.refocus();
         }
     },
 
@@ -41,7 +30,7 @@ module.exports = React.createClass({
                 var bookmark = bookmarks[i];
                 items.push(
                     <SearchItem
-                        active={this.state.focusedItemIndex === i}
+                        active={SearchStore.focusedItemIndex === i}
                         handleKeyDown={this.handleKeyDown}
                         tabIndex={i + 1}
                         title={bookmark.title}
