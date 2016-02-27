@@ -4,12 +4,13 @@ body {
 }
 
 body, .list-group-item, .search-input {
-    background-color: #262626;
-    color: #FFFFFF;
+    background-color: #262626 !important;
+    color: #FFFFFF !important;
 }
 
 .list-group-item:active, .list-group-item:focus, .list-group-item:hover {
-    background-color: #185C7F;
+    background-color: #185C7F !important;
+    color: #FFFFFF !important;
 }
 
 .list-group-item {
@@ -18,6 +19,14 @@ body, .list-group-item, .search-input {
 
 a {
     color: #FFFFFF;
+}
+
+.search-results-row {
+    height: 0;
+}
+
+.list-group {
+    margin: 0;
 }
 
 .container {
@@ -31,12 +40,4 @@ a {
 
 .input-group {
     width: 100%;
-}
-
-.search-input {
-
-}
-
-.list-group-item {
-
 }

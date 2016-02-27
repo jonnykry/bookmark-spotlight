@@ -38,7 +38,7 @@ module.exports = React.createClass({
                 <div className="row search-row">
                     <SearchBar />
                 </div>
-                <div className="row">
+                <div className="row search-results-row">
                     <ResultsContainer />
                 </div>
             </div>
