@@ -1,10 +1,18 @@
 const classnames = require('classnames');
 
+const RefluxActions = require('../RefluxActions.jsx');
 const SearchStore = require('../stores/SearchStore.jsx');
 const SearchBar = require('./searchBar.jsx');
-const SearchItems = require('./searchItems.jsx');
+const ResultsContainer = require('./resultsContainer.jsx');
 
 module.exports = React.createClass({
+    getInitialState: function() {
+        return {
+            focusedItemIndex: 0,
+            focusedItem: ''
+        }
+    },
+
     componentDidMount: function() {
         chrome.bookmarks.getTree(this.populateBookmarkDictionary);
     },
@@ -25,14 +33,13 @@ module.exports = React.createClass({
     },
 
     render: function() {
-
         return (
             <div className="container">
                 <div className="row search-row">
                     <SearchBar />
                 </div>
                 <div className="row">
-                    <SearchItems />
+                    <ResultsContainer />
                 </div>
             </div>
         );
