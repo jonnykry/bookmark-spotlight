@@ -1,20 +1,18 @@
 
 ### Bookmark Spotlight
 
-An easier way to filter through your bookmarks and bookmark folders in Chrome.
+An incredibly fast way to search through your bookmarks and bookmark folders in Chrome.  It's like OSX Spotlight, but for Chrome Bookmarks.
 
-##### To-do list / current work in progress:
-* [x] - Implement a proper `react` / `reflux` flow
-* [x] - Create `SearchItems` based on search results from the `SearchStore`
-* [ ] - Introduce `eslint` for better dev flow
-* [ ] - Change all code to ES6 standards
-* [ ] - sass
-* [ ] - Enhance search
-    * [ ] - Search while typing
-    * [ ] - Custom search algorithm
-    * [ ] - Input debounce / polling for realistic feel
-    * [ ] - Spinner for aesthetics
+To use the extension, press `Cmd + Shift + Space` and search for the bookmark.
 
-##### Ideas:
-* Add keywords to bookmarks for improved searching
-* Store bookmarks in a better structure, or traverse the tree for searching (only need {ID: Title})
+### Installation
+
+Since this is unfinished, it is not yet on the Chrome app store.  However, if you're eager to use the tool, you can use it by manually loading it.  To use this extension:
+- Clone the source
+- Run `$ npm run build`
+- Import the extension in Chrome's extension tab using `Load unpacked extension`, pointing at the `bookmark-spotlight-react` folder
+- You'll have to add your own icon to `src/img/icon.png` (there will be one added soon)
+
+### Notes
+
+There's still a lot of work to be done -- if you have any suggestions, feel free to open an issue.  Also, feel free to contribute!  :)
