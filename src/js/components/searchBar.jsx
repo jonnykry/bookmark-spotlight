@@ -30,10 +30,12 @@ module.exports = React.createClass({
 
     handleKeyDown: function(e) {
         if (e.keyCode === ENTER_KEY_CODE) {
-            RefluxActions.search(this.state.value);
-            this.setState({
-                value: ''
-            });
+            if (this.state.value.length) {
+                RefluxActions.search(this.state.value);
+                this.setState({
+                    value: ''
+                });
+            }
         } else if (e.keyCode === DOWN_ARROW && SearchStore.focusedItemIndex < SearchStore.bookmarksToRender.length) {
             SearchStore.focusedItemIndex = SearchStore.focusedItemIndex + 1;
             RefluxActions.refocus();

@@ -1,4 +1,3 @@
-
 ### Bookmark Spotlight
 
 An incredibly fast way to search through your bookmarks and bookmark folders in Chrome.  It's like OSX Spotlight, but for Chrome Bookmarks.
@@ -16,3 +15,7 @@ Since this is unfinished, it is not yet on the Chrome app store.  However, if yo
 ### Notes
 
 There's still a lot of work to be done -- if you have any suggestions, feel free to open an issue.  Also, feel free to contribute!  :)
+
+### License
+
+MIT -- Project by [Jonny Krysh](https://github.com/jonnykry)
