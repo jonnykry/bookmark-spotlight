@@ -50,7 +50,7 @@ module.exports = React.createClass({
             SearchStore.searchItems = items;
         }
 
-        if (SearchStore.hasSearched && SearchStore.searchItems.length === 0) {
+        if (SearchStore.hasSearched && SearchStore.bookmarksToRender.length === 0) {
             items = <div className="list-group-item">No Results Found</div>;
         }
 
