@@ -26,7 +26,10 @@ module.exports = React.createClass({
         var items = [];
 
         if (bookmarks.length > 0) {
-            for (var i = 0; i < bookmarks.length; i++) {
+            // Set an arbitrary limit to the number of items
+            // TODO: Set up scroll-to-bottom refresh
+            var maxItems = bookmarks.length > 50 ? 50 : bookmarks.length;
+            for (var i = 0; i < maxItems; i++) {
                 var bookmark = bookmarks[i];
                 items.push(
                     <SearchItem
@@ -34,13 +37,17 @@ module.exports = React.createClass({
                         handleKeyDown={this.handleKeyDown}
                         tabIndex={i + 1}
                         title={bookmark.title}
+                        parentId={bookmark.parentId}
                         url={bookmark.url}
                         hasResults={true} />
                 );
             }
+
+            SearchStore.searchItems = items;
+        } else if (SearchStore.hasSearched) {
+            items.push(<div className="list-group-item">No Results Found</div>)
         }
 
-        SearchStore.searchItems = items;
         return items;
     },
 

@@ -41,3 +41,16 @@ a {
 .input-group {
     width: 100%;
 }
+
+.list-group-text {
+    color: #9da0a4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: inline-block;
+}
+
+.list-group-title {
+    color: #FFFFFF;
+}

@@ -11,11 +11,13 @@ module.exports = Reflux.createStore({
         this.bookmarksToRender = [];
         this.focusedItemIndex = -1; // default to input
         this.forceSeachBarFocus = false;
+        this.hasSearched = false;
     },
 
     onSearch: function(value) {
         // testing chromes built-in search
         chrome.bookmarks.search(value, this.handleBookmarkSearch);
+        this.hasSearched = true;
     },
 
     onRefocus: function() {
