@@ -31,21 +31,27 @@ module.exports = React.createClass({
             var maxItems = bookmarks.length > 50 ? 50 : bookmarks.length;
             for (var i = 0; i < maxItems; i++) {
                 var bookmark = bookmarks[i];
-                items.push(
-                    <SearchItem
-                        active={SearchStore.focusedItemIndex === i}
-                        handleKeyDown={this.handleKeyDown}
-                        tabIndex={i + 1}
-                        title={bookmark.title}
-                        parentId={bookmark.parentId}
-                        url={bookmark.url}
-                        hasResults={true} />
-                );
+
+                // Bookmarks without URLs are Folders
+                if (bookmark.url) {
+                    items.push(
+                        <SearchItem
+                            active={SearchStore.focusedItemIndex === i}
+                            handleKeyDown={this.handleKeyDown}
+                            tabIndex={i + 1}
+                            title={bookmark.title}
+                            parentId={bookmark.parentId}
+                            url={bookmark.url}
+                            hasResults={true}/>
+                    );
+                }
             }
 
             SearchStore.searchItems = items;
-        } else if (SearchStore.hasSearched) {
-            items.push(<div className="list-group-item">No Results Found</div>)
+        }
+
+        if (SearchStore.hasSearched && SearchStore.searchItems.length === 0) {
+            items = <div className="list-group-item">No Results Found</div>;
         }
 
         return items;
