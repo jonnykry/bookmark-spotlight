@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 const Reflux = require('reflux');
 const classNames = require('classnames');
 

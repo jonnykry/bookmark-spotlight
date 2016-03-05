@@ -1,3 +1,6 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+
 const Reflux = require('reflux');
 const classnames = require('classnames');
 
@@ -57,7 +60,7 @@ module.exports = React.createClass({
                 <input
                     type="text"
                     className="search-input form-control"
-                    placeholder="Search for..."
+                    placeholder="Search for a bookmark..."
                     ref={(ref) => this.searchBarRef = ref}
                     value={this.state.value}
                     onChange={this.handleChange}

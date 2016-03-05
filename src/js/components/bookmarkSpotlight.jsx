@@ -1,3 +1,6 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+
 const classnames = require('classnames');
 
 const RefluxActions = require('../RefluxActions.jsx');
