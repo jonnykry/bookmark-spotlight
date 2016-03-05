@@ -8,7 +8,6 @@ To use the extension, press `Cmd + Shift + Space` and search for the bookmark.
 
 Since this is unfinished, it is not yet on the Chrome app store.  However, if you're eager to use the tool, you can use it by manually loading it.  To use this extension:
 - Clone the source
-- You'll have to add your own icon to `src/img/icon.png`.  There will be one added soon, but until then google search `search icon` and grab one that's around 128x128.
 - Run `npm install && gulp` (you'll need [Node](https://nodejs.org/en/) and [Gulp](http://gulpjs.com/) to build this locally)
 - In Chrome, go to [chrome://extensions/](chrome://extensions/) and select "Developer Mode"
   - Click "Load Unpacked Extension..."

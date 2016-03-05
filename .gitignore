@@ -2,9 +2,6 @@
 dist
 node_modules
 
-# img
-src/img/icon.png
-
 # editor
 .idea
 
