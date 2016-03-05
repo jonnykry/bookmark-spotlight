@@ -1,5 +1,5 @@
 # dirs
-build
+build/js/*
 node_modules
 
 # img
