@@ -1,13 +1,18 @@
 
 var source = require('vinyl-source-stream');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var watchify = require('watchify');
 var babelify = require('babelify');
-var uglify = require('gulp-uglify');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var rename = require("gulp-rename");
 var notify = require('gulp-notify');
+var sass = require('gulp-sass');
+var concatCss = require('gulp-concat-css');
+var minifyCss = require('gulp-minify-css');
+var htmlreplace = require('gulp-html-replace');
+var autoprefixer = require('gulp-autoprefixer');
 
 function handleErrors() {
     var args = Array.prototype.slice.call(arguments);
@@ -25,7 +30,6 @@ function buildScript(file, watch) {
         debug : true
     };
 
-    // watchify() if watch requested, otherwise run browserify() once
     var bundler = watch ? watchify(browserify(props)) : browserify(props);
     bundler.transform(reactify);
     bundler.transform(babelify);
@@ -35,7 +39,7 @@ function buildScript(file, watch) {
         return stream
             .on('error', handleErrors)
             .pipe(source('client-bundle.js'))
-            .pipe(gulp.dest('./build/js'));
+            .pipe(gulp.dest('./dist/src/js'));
     }
 
     // listen for an update and run rebundle
@@ -44,20 +48,46 @@ function buildScript(file, watch) {
         gutil.log('Rebundle...');
     });
 
-    // run it once the first time buildScript is called
     return rebundle();
 }
 
-// run once
 gulp.task('default', ['build']);
 
-// run once
-gulp.task('build', function() {
+gulp.task('build', ['css', 'copyIcon', 'copyManifest', 'html'], function() {
     return buildScript('client.jsx', false);
 });
 
-// run 'build' task first, then watch for future changes
 gulp.task('watch', ['build'], function() {
     return buildScript('client.jsx', true);
 });
 
+gulp.task('css', function() {
+    return gulp.src('src/css/*.scss')
+        .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(concatCss('styles.min.css'))
+        .pipe(minifyCss({compatibility: 'ie8'}))
+        .pipe(gulp.dest('./dist/src/css/'));
+});
+
+gulp.task('copyIcon', function() {
+    return gulp.src('src/img/icon.png')
+        .pipe(gulp.dest('./dist/src/img/'));
+});
+
+gulp.task('copyManifest', function() {
+    return gulp.src('./manifest.json')
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('html', function() {
+    gulp.src('src/popup.html')
+        .pipe(htmlreplace({
+            'css': 'style.min.css',
+            'js': 'bundle.min.js'
+        }))
+        .pipe(gulp.dest('./dist/src/'));
+});
