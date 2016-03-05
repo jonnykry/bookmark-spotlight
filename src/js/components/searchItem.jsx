@@ -1,3 +1,5 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
 module.exports = React.createClass({
