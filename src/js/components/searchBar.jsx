@@ -29,6 +29,10 @@ module.exports = React.createClass({
         this.setState({
             value: event.target.value
         });
+
+        if (event.target.value.length > 2) {
+            RefluxActions.search(event.target.value);
+        }
     },
 
     handleKeyDown: function(e) {
