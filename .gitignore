@@ -1,5 +1,4 @@
-# dirs
-dist
+# directories
 node_modules
 
 # editor
@@ -7,3 +6,7 @@ node_modules
 
 # npm logs
 npm-debug.log
+
+# production
+dist
+dist.zip
