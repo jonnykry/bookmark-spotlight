@@ -1,10 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var classnames = require('classnames');
-var RefluxActions = require('../RefluxActions.jsx');
-var SearchStore = require('../stores/SearchStore.jsx');
-var SearchBar = require('./searchBar.jsx');
-var ResultsContainer = require('./resultsContainer.jsx');
+var RefluxActions = require('./RefluxActions.jsx');
+var SearchStore = require('./stores/SearchStore.jsx');
+var SearchBar = require('./components/searchBar.jsx');
+var ResultsContainer = require('./components/resultsContainer.jsx');
 
 module.exports = React.createClass({
     getInitialState: function() {
