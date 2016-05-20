@@ -8,5 +8,4 @@ node_modules
 npm-debug.log
 
 # production
-dist
-dist.zip
+build

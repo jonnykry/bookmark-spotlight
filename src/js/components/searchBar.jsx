@@ -1,15 +1,13 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Reflux = require('reflux');
+var classnames = require('classnames');
+var RefluxActions = require('../RefluxActions.jsx');
+var SearchStore = require('../stores/SearchStore.jsx');
 
-const Reflux = require('reflux');
-const classnames = require('classnames');
-
-const RefluxActions = require('../RefluxActions.jsx');
-const SearchStore = require('../stores/SearchStore.jsx');
-
-const ENTER_KEY_CODE = 13;
-const DOWN_ARROW = 40;
-const UP_ARROW = 38;
+var ENTER_KEY_CODE = 13;
+var DOWN_ARROW = 40;
+var UP_ARROW = 38;
 
 module.exports = React.createClass({
     mixins: [Reflux.connect(SearchStore, 'onFocusSearchBar', 'onRefocus', 'onFocusSearchBar')],

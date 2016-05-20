@@ -1,9 +1,8 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const classNames = require('classnames');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var classNames = require('classnames');
 
 module.exports = React.createClass({
-
     componentDidMount: function() {
         this.setFocus();
     },

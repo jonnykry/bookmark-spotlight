@@ -1,15 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Reflux = require('reflux');
+var classNames = require('classnames');
+var RefluxActions = require('../RefluxActions.jsx');
+var SearchStore = require('../stores/SearchStore.jsx');
+var SearchItem = require('./searchItem.jsx');
 
-const Reflux = require('reflux');
-const classNames = require('classnames');
-
-const RefluxActions = require('../RefluxActions.jsx');
-const SearchStore = require('../stores/SearchStore.jsx');
-const SearchItem = require('./searchItem.jsx');
-
-const DOWN_ARROW = 40;
-const UP_ARROW = 38;
+var DOWN_ARROW = 40;
+var UP_ARROW = 38;
 
 module.exports = React.createClass({
     mixins: [Reflux.connect(SearchStore, 'onSearch', 'onRefocus')],
@@ -30,7 +28,6 @@ module.exports = React.createClass({
 
         if (bookmarks.length > 0) {
             // Set an arbitrary limit to the number of items
-            // TODO: Set up scroll-to-bottom refresh
             var maxItems = bookmarks.length > 50 ? 50 : bookmarks.length;
             for (var i = 0; i < maxItems; i++) {
                 var bookmark = bookmarks[i];
@@ -59,7 +56,6 @@ module.exports = React.createClass({
 
         return items;
     },
-
 
     render: function() {
         return <div className="list-group">{this.renderBookmarks()}</div>;
