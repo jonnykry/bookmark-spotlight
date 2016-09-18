@@ -14,7 +14,7 @@ Since this is unfinished, it is not yet on the Chrome app store.  However, if yo
   - Load the extension by selecting the `dist` directory (which should have been built from running `gulp`)
 
 ### Misc
-There's still a lot of work to be done -- if you have any suggestions, feel free to open an issue.  If you'd like to contribute, follow the Installation steps for ways to build.  There's also a `gulp watch` task which will watch for Javascript changes so you don't have to rebuild every time.
+There's still a lot of work to be done.  If you have any suggestions, feel free to open an issue.  If you'd like to contribute, follow the Installation steps for ways to build.  There's also a `gulp watch` task which will watch for Javascript changes so you don't have to rebuild every time.
 
 ### License
 
